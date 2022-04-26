@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -40,7 +41,37 @@ public class TestShapes {
 
          Circle has the largest area as 50.24
          */
+        Circle circle = new Circle();
+        Rectangle rectangle = new Rectangle();
+        Square square = new Square();
 
+        List<Shape> shapes = new ArrayList<>();
+
+        square.setSide(2.5);
+        circle.setRadius(0.5);
+        rectangle.setHeight(6);
+        rectangle.setWidth(5.5);
+
+
+        shapes.add(circle);
+        shapes.add(rectangle);
+        shapes.add(square);
+
+        Shape classMax = null;
+        double maxArea = Double.MIN_VALUE;
+
+        for (Shape shape : shapes) {
+            String cN = shape.getClass().getSimpleName();
+            System.out.println(shape + "\nArea of the " + cN + " is = " + shape.getArea()
+                    + "\nPerimeter of the " + cN + " is = " + shape.getPerimeter() + "\n");
+
+            if (shape.getArea() > maxArea){
+                maxArea = shape.getArea();
+                classMax = shape;
+            }
+        }
+
+        System.out.println(classMax.getClass().getSimpleName() + " has the largest area as " + maxArea);
 
     }
 }
